@@ -2,15 +2,22 @@
 heroku-buildpack-snowflake-odbc
 ===
 
+Forked into `cortexintel` from the original (unmaintained since 2020)
+[edgarv09/heroku-buildpack-snowflake-odbc](https://github.com/edgarv09/heroku-buildpack-snowflake-odbc)
+for custodianship — `cortex/app.json` pins its buildpack reference to a
+specific commit SHA in this fork rather than an upstream we don't control.
+
 ## Usage
 This requires [heroku-buildpack-apt](https://github.com/heroku/heroku-buildpack-apt) to run before
 it, with the following in the Aptfile:
 
-Use the latest url from snowflake odbc repository or use the copy stored in this repo
+Pin an exact, GPG-signed version from Snowflake's official repo — do not use
+"latest," it silently drifts out of support (see Snowflake's quarterly
+client-driver EOL notices):
 ```
 unixodbc
 unixodbc-dev
-https://sfc-repo.snowflakecomputing.com/odbc/linux/2.21.3/snowflake-odbc-2.21.3.x86_64.deb
+https://sfc-repo.snowflakecomputing.com/odbc/linux/3.19.0/snowflake-odbc-3.19.0.x86_64.deb
 ```
 You can configure the credentials for your connection usign the following ENV variables
 
